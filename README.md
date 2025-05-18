@@ -8,5 +8,5 @@ This project implements a high-performance, customizable data table in React usi
 
 ### Infinite Scroll vs. Pagination
 
-Static / client-side data : **Infinite scroll / virtualization** using React Window
-API / dynamic data : **Pagination** (preferably server-side)
+- Static / client-side data : **Infinite scroll / virtualization** using React Window
+- API / dynamic data : **Pagination** (preferably server-side)
