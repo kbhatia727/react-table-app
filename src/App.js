@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { generateFakeUsers } from "./utils/generateFakeData";
+import DataTable from "./components/DataTable";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("users");
+    if (stored) {
+      setUsers(JSON.parse(stored));
+    } else {
+      const generated = generateFakeUsers(500);
+      localStorage.setItem("users", JSON.stringify(generated));
+      setUsers(generated);
+    }
+  }, []);
+
+  return <DataTable data={users} />;
 }
 
 export default App;
